@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML5//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>ROS Main</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    
+    <link rel="stylesheet" href="css/my.css">
+    <script type="text/javascript" src="js/eventemitter2.min.js"></script>
+    <script type="text/javascript" src="js/mjpegcanvas.min.js"></script>
+    <script type="text/javascript" src="js/roslib.min.js"></script>
+    <script type="text/javascript" src="js/simple.js"></script>
+
+    <script type="text/javascript">
+          function init() {
+            var readyStateCheckInterval = setInterval(function() {
+                if (document.readyState === "complete") {
+                  init();
+                  clearInterval(readyStateCheckInterval);
+              }
+        }, 100);
+          }
+    </script>
+
+</head>
+
+<body onload="init();init_ros();">
+<form name="simple_gui" method="get" action="./">
+<section id="news">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 video ">
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-6">Server Hostname or IP: <input type="text" id="rosbridgeHost" value=""></div>
+                        <div class="col-md-4">Port: <input type="text" id="rosbridgePort" size="5" value=""></div>
+                        <div class="col-md-2">Connect: <input type="checkbox" id="connectROS" class="checkbox" checked onClick="connectDisconnect();"></div>
+                    </div>
+                    <div class="show" id="videoCanvas">
+                        
+                    </div>
+                    <div>
+                    <input type="button" value="click" class="click">
+                    <input type="text" class="output">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 kongzhi">
+                <h3 class="text-center">ROS Remote Control</h3>
+                <p class="text-center">
+                    <tr valign="top">
+                        <td colspan="3">
+                        <label id="cmdVelStatusMessage"></label>
+                        <br><br>
+                        <b>
+                        <label id="navInstructions"></label>
+                        </b>
+                        </td>
+                    </tr>
+                </p>
+                <h5 class="text-center">Hold down SHIFT Key when clicking arrows</h5>
+
+                <div class="text-center anniu">
+                    <!-- 向前走 -->
+                    <div>
+                        <span class="icon-caret-up" onTouchEnd="timedStopRobot();" onTouchStart="setSpeed('forward');clearTimedStop();" onClick="setSpeed('forward');"></span>
+                    </div>
+
+                    <div>
+                        <!-- 向左 -->
+                        <span class="icon-caret-left" onTouchEnd="timedStopRobot();" onTouchStart="setSpeed('left');clearTimedStop();" onClick="setSpeed('left');"></span>
+                        <!-- 停止运动 -->
+                        <span class="icon-pause pause" onClick="stopRobot('forward');"></span>
+                        <!-- 向右转 -->
+                        <span class="icon-caret-right" onTouchEnd="timedStopRobot();" onTouchStart="setSpeed('right');clearTimedStop();" onClick="setSpeed('right');"></span>
+                    </div>
+
+                    <!-- 向后退 -->
+                    <div>
+                        <span class="icon-caret-down" onTouchEnd="timedStopRobot();" onTouchStart="setSpeed('backward');clearTimedStop();" onClick="setSpeed('backward');"></span>
+                    </div>
+                    <!-- 设置最大速度 -->
+                    <tr>
+                        <td align="right">
+                            <span style="font-size: 14pt;">Max Linear Spd:</span>
+                        </td>
+                        <td>
+                        <input type="range" id="maxLinearSpeed" min="0.01" max="0.5" step="0.01" value="0.2"
+                    onChange="writeStatusMessage('maxLinearSpeedDisplay', this.value);"
+                    onMouseUp="setMaxLinearSpeed(this.value);" onInput="maxLinearSpeedDisplay.value=this.value;">
+                        </td>
+                        <td>
+                            <span style="font-weight: bold;">
+                                <output id="maxLinearSpeedDisplay" size="4"></output>
+                            </span>
+                        </td>
+                    </tr>
+
+                    <!-- 设置最大转速 -->
+
+                    <tr>
+                        <td align="right">
+                        <span style="font-size: 14pt;">Max Angular Spd:</span>
+                        </td>
+                    <td>
+                        <input type="range" id="maxAngularSpeed" min="0.01" max="2.0" step="0.01" value="1.0"
+                    onChange="writeStatusMessage('maxAngularSpeedDisplay', this.value);"
+                    onMouseUp="setMaxAngularSpeed(this.value);" onInput="maxAngularSpeedDisplay.value=this.value;">
+                    </td>
+                    <td>
+                        <span style="font-weight: bold;">
+                        <output id="maxAngularSpeedDisplay" size="4"></output>
+                        </span>
+                    </td>
+                    </tr>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
