@@ -1,0 +1,7 @@
+1、AxureRP安装完成之后，将AxureRP8_CHS_V1.5中的lang文件夹拷贝到安装目录
+2、首次打开AxureRP软件，在启动界面右上角“输入授权”窗体中，输入下面的授权码。注意如果提示检测到更新版本，请不要更新，点击忽略，并把检查更新选项勾去掉。
+
+Licensee:
+米 业成 (STUDENT)
+Key:
+nFmqBBvEqdvbiUjy8NZiyWiRSg3yO+PtZ8c9wdwxWse4WprphvSu9sohAdpNnJK5

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>跑腿员首页</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--自己写的文件默认放在最下面-->
+    <link rel="stylesheet" href="css/SKOKOV.css">
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/Queryorder.css"/>
+</head>
+<body>
+    <div id="wrapper" class="container">
+        <!--导航栏目-->
+        <header id="header" class="clearfix">
+            <nav class="navbar navbar-itcast">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+                            <span class="icon-desktop"> 洗衣系统原型</span>
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse clearfix" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">我的信息</a></li>
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="#">开发人员</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </header>
+        <!--/导航栏目-->
+
+        <!--介绍-->
+        <section id="introduce">
+            <div class="container">
+                <div>
+                    <h3 class="text-center">我的任务</h3>
+                    <p class="text-center">My tasks</p>
+                </div>
+                <div class="container ">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 text-center">
+                            <div>
+                                <button class="btn-default btm get-new" style="color: #c0c0c0;">获取任务</button>
+                                <div class="container hr"></div>
+                            </div>
+                            <div class="show"></div>
+                            <!-- <div class="">
+                                <div><span class="didanid">订单01</span>&nbsp;&nbsp;&nbsp;<span>13:03</span></div>
+                                <div><p>订单信息：xxxx</p></div>
+                                <div class="zhuang">状态：<span class="zhuangtai">需要取件</span></div>
+                                <button class="btn-default">信息核对</button>
+                                <div class="container hr"></div>
+                            </div> -->
+                           <!--  <div>
+                               <div><span>订单02</span>&nbsp;&nbsp;&nbsp;<span>12:03</span></div>
+                               <div><p>订单信息：xxxx</p></div>
+                               <div class="zhuang">状态：<span class="zhuangtai wancheng">正在送件</span></div>
+                               <button class="btn-default">确认送达</button>
+                               <div class="container hr"></div>
+                           </div>
+                           <div>
+                               <div><span>订单03</span>&nbsp;&nbsp;&nbsp;<span>11:03</span></div>
+                               <div><p>订单信息：xxxx</p></div>
+                               <div class="zhuang">状态：<span class="zhuangtai wancheng">已完成</span></div>
+                               <button class="btn-default">查看评价</button>
+                               <div class="container hr"></div>
+                           </div>
+                           <div>
+                               <div><span>订单03</span>&nbsp;&nbsp;&nbsp;<span>11:03</span></div>
+                               <div><p>订单信息：xxxx</p></div>
+                               <div class="zhuang">状态：<span class="zhuangtai">需要服务</span></div>
+                               <button class="btn-default">确定</button>
+                               <div class="container hr"></div>
+                           </div>
+                           <div>
+                               <div><span>订单03</span>&nbsp;&nbsp;&nbsp;<span>11:03</span></div>
+                               <div><p>订单信息：xxxx</p></div>
+                               <div class="zhuang">状态：<span class="zhuangtai">需要派件</span></div>
+                               <button class="btn-default">接受</button>
+                               <div class="container hr"></div>
+                           </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/介绍-->
+
+        <!--分页-->
+        <section id="page">
+            <div class="container text-center">
+                <div class="line"></div>
+                <div class="page">
+                    <div class="container">OUT WORK</div>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+            </div>
+        </section>
+        <!--/分页-->
+
+        <!--底部列表-->
+        <div id="liebiao">
+            <div class="container liebiao clearfix">
+                <div class="pull-left">Copyright 2018 - 实训</div>
+                <div class="pull-right">
+                    <ul>
+                        <li><a href="#">我的信息</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">开发人员</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/底部列表-->
+
+
+    </div>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="js/SKOKOV.js"></script>
+<script>
+    document.querySelector(".get-new").onclick= function () {
+        //发起ajax请求
+        var xhr=new XMLHttpRequest();
+        xhr.open("get","duqu.php");
+        xhr.onreadystatechange= function () {
+            if(xhr.readyState==4&&xhr.status==200){//请求成功后
+                console.log(xhr.responseText);//xhr.reponseText是后台返回给你的数据
+                //转化为对应的对象数组
+                var obj=JSON.parse(xhr.responseText);
+                console.log(obj);
+                var html="";
+                //循环数组
+                for(var i=0;i<obj.length;i++){
+                    var currentObj=obj[i];
+                    html+="<div>";
+                    html+="<div><span>订单号："+currentObj.dingdan_id+"</span>&nbsp;&nbsp;&nbsp;<span>13:03</span></div>";
+                    html+="<div><p>订单信息&nbsp姓名："+currentObj.user_name+"&nbsp价格："+currentObj.price+"&nbsp电话："+currentObj.user_tel+"</p><p>取件时间:"+timeTime(currentObj.qujian_time)+"&nbsp送达时间："+timeTime(currentObj.songda_time)+"</p></div>";
+                    html+="<div class='zhuang'>状态：<span class='zhuangtai'>"+if_state(currentObj.state)+"</span></div>";
+                    html+='<button class="btn-default">信息核对</button>';
+                    html+='<div class="container hr"></div>';
+                    html+=" </div>";
+                    console.log(currentObj.dingdan_id);
+                }
+                console.log(html);
+                document.querySelector(".show").innerHTML=html; //渲染界面
+                }
+            }
+    
+        xhr.send(null);
+    }
+
+    function timeTime(ele){//时间戳转化函数
+        var date=new Date(ele*1000);
+        Y=date.getFullYear()+'-';
+        M=(date.getMonth()+1<10 ?'0'+(date.getMonth()+1):date.getMonth()+1)+'-';
+        D=date.getDate()+' ';
+        h=date.getHours()+':';
+        m=date.getMinutes()+':';
+        s=date.getSeconds();
+        return Y+M+D+h+m+s;
+    }
+
+    function if_state(ele){//判断请求状态
+        if(ele==1){
+            return '需要取件';
+        }else{
+            return '已完成';
+        }
+    }
+</script>
+</body>
+</html>
+
+                            
+                              
+                              
+                              
+                              
+                                                         
+
+
+
+
